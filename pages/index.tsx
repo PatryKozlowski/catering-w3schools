@@ -5,9 +5,11 @@ import Nav from '../components/Nav'
 import Banner from '../components/Banner'
 import { GetStaticProps } from 'next'
 import { navElementProps, StaticProps } from '../types'
-import { bannerData } from '../lib/fetcher'
+import { aboutData, bannerData, menuData, menuItemData } from '../lib/fetcher'
+import About from '../components/About'
+import Menu from '../components/Menu'
 
-const Home = ({ bannerTemplate }: StaticProps): JSX.Element => {
+const Home = ({ bannerTemplate, aboutTemplate, menuTemplate, menuItemTemplate }: StaticProps): JSX.Element => {
   const aboutRef = React.useRef<HTMLDivElement>(null)
   const menuRef = React.useRef<HTMLDivElement>(null)
   const contactRef = React.useRef<HTMLFormElement>(null)
@@ -39,6 +41,23 @@ const Home = ({ bannerTemplate }: StaticProps): JSX.Element => {
       </Header>
 
       <Banner bannerTemplate={bannerTemplate} />
+
+      <section className={'centerSection'}>
+        <About
+          ref={aboutRef}
+          aboutTemplate={aboutTemplate}
+        />
+        <hr />
+      </section>
+
+      <section className={'centerSection'}>
+        <Menu
+          ref={menuRef}
+          menuTemplate={menuTemplate}
+          menuItemTemplate={menuItemTemplate}
+        />
+        <hr />
+      </section>
     </>
   )
 }
@@ -48,15 +67,21 @@ export default Home
 export const getStaticProps: GetStaticProps<StaticProps> = async () => {
   try {
     const bannerTemplate = await bannerData()
+    const aboutTemplate = await aboutData()
+    const menuTemplate = await menuData()
+    const menuItemTemplate = await menuItemData()
 
-    if (!bannerTemplate) {
+    if (!bannerTemplate || !aboutTemplate || !menuTemplate || !menuItemTemplate) {
       console.log('Data occured error, some data probaly is null')
       return { notFound: true }
     }
 
     return {
       props: {
-        bannerTemplate
+        bannerTemplate,
+        aboutTemplate,
+        menuTemplate,
+        menuItemTemplate
       }
     }
 

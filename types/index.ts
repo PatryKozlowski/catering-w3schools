@@ -25,8 +25,40 @@ export interface Banner extends SanityBody {
   image: SanityImage
 }
 
+export interface About extends SanityBody {
+  _type: 'about'
+  title: string
+  subtitle: string
+  desc: string
+  descSpecificWord: string
+  descLighter: string
+  image: SanityImage
+}
+
+export interface Menu extends SanityBody {
+  _type: 'menu'
+  title: string
+  image: SanityImage
+}
+
+export interface MenuItem extends SanityBody {
+  _type: 'menuItem'
+  title: string
+  desc: string
+  price: string
+}
+
 export interface StaticProps {
   bannerTemplate: {
     banner: Banner[]
+  }
+  aboutTemplate: {
+    about: About[]
+  }
+  menuTemplate: {
+    menu: Menu[]
+  }
+  menuItemTemplate: {
+    menuItem: MenuItem[]
   }
 }

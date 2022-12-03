@@ -30,10 +30,12 @@
 
  @layer components {
   .centerSection { 
-    @apply max-w-[1100] mx-auto
+    @apply max-w-[1100px] mx-auto
   }
  }
 
+ @layer components {
   .img {
     @apply object-fill opacity-75 rounded
   }
+ }
