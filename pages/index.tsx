@@ -97,7 +97,6 @@ export const getStaticProps: GetStaticProps<StaticProps> = async () => {
         contactTemplate
       }
     }
-
   } catch (error) {
     console.log(error)
     return { notFound: true }
