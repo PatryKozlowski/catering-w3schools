@@ -48,6 +48,27 @@ export interface MenuItem extends SanityBody {
   price: string
 }
 
+export interface Contact extends SanityBody {
+  _type: 'contact'
+  title: string
+  desc: string
+  subDesc: string
+  adress: string
+}
+
+export interface InputsForm {
+  name: string
+  amount: number
+  date: string
+  message: string
+}
+
+export interface InputProps {
+  placeholder: string
+  type: 'text' | 'number' | 'datetime-local'
+  errorMessage: string | undefined
+}
+
 export interface StaticProps {
   bannerTemplate: {
     banner: Banner[]
@@ -60,5 +81,8 @@ export interface StaticProps {
   }
   menuItemTemplate: {
     menuItem: MenuItem[]
+  }
+  contactTemplate: {
+    contact: Contact[]
   }
 }

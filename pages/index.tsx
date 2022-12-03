@@ -5,11 +5,12 @@ import Nav from '../components/Nav'
 import Banner from '../components/Banner'
 import { GetStaticProps } from 'next'
 import { navElementProps, StaticProps } from '../types'
-import { aboutData, bannerData, menuData, menuItemData } from '../lib/fetcher'
+import { aboutData, bannerData, contactData, menuData, menuItemData } from '../lib/fetcher'
 import About from '../components/About'
 import Menu from '../components/Menu'
+import Contact from '../components/Contact'
 
-const Home = ({ bannerTemplate, aboutTemplate, menuTemplate, menuItemTemplate }: StaticProps): JSX.Element => {
+const Home = ({ bannerTemplate, aboutTemplate, menuTemplate, menuItemTemplate, contactTemplate }: StaticProps): JSX.Element => {
   const aboutRef = React.useRef<HTMLDivElement>(null)
   const menuRef = React.useRef<HTMLDivElement>(null)
   const contactRef = React.useRef<HTMLFormElement>(null)
@@ -58,6 +59,13 @@ const Home = ({ bannerTemplate, aboutTemplate, menuTemplate, menuItemTemplate }:
         />
         <hr />
       </section>
+
+      <section className={'centerSection'}>
+        <Contact
+          ref={contactRef}
+          contactTemplate={contactTemplate}
+        />
+      </section>
     </>
   )
 }
@@ -70,8 +78,9 @@ export const getStaticProps: GetStaticProps<StaticProps> = async () => {
     const aboutTemplate = await aboutData()
     const menuTemplate = await menuData()
     const menuItemTemplate = await menuItemData()
+    const contactTemplate = await contactData()
 
-    if (!bannerTemplate || !aboutTemplate || !menuTemplate || !menuItemTemplate) {
+    if (!bannerTemplate || !aboutTemplate || !menuTemplate || !menuItemTemplate || !contactTemplate) {
       console.log('Data occured error, some data probaly is null')
       return { notFound: true }
     }
@@ -81,7 +90,8 @@ export const getStaticProps: GetStaticProps<StaticProps> = async () => {
         bannerTemplate,
         aboutTemplate,
         menuTemplate,
-        menuItemTemplate
+        menuItemTemplate,
+        contactTemplate
       }
     }
 

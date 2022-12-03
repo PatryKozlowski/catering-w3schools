@@ -70,9 +70,9 @@ const About = React.forwardRef<HTMLDivElement, Props>(({ aboutTemplate }, ref) =
           className={'img hidden md:flex'}
         />
       </div>
-      <div className={'font-playFair text-[18px] flex flex-col items-center px-6 py-3'}>
-        <h2 className={'text-4xl my-4'}>{title}</h2>
-        <h5 className={'text-gray-600 mt-4'}>{subtitle}</h5>
+      <div className={'font-playFair text-md flex flex-col items-center px-6 py-3'}>
+        <h2 className={'my-4'}>{title}</h2>
+        <h5 className={'text-gray-600 text-md mt-4'}>{subtitle}</h5>
         <p className={'mt-5'}>
           {template}
         </p>
