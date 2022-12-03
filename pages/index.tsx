@@ -9,6 +9,7 @@ import { aboutData, bannerData, contactData, menuData, menuItemData } from '../l
 import About from '../components/About'
 import Menu from '../components/Menu'
 import Contact from '../components/Contact'
+import Footer from '../components/Footer'
 
 const Home = ({ bannerTemplate, aboutTemplate, menuTemplate, menuItemTemplate, contactTemplate }: StaticProps): JSX.Element => {
   const aboutRef = React.useRef<HTMLDivElement>(null)
@@ -66,6 +67,8 @@ const Home = ({ bannerTemplate, aboutTemplate, menuTemplate, menuItemTemplate, c
           contactTemplate={contactTemplate}
         />
       </section>
+
+      <Footer />
     </>
   )
 }
