@@ -3,7 +3,6 @@
 @tailwind utilities;
 @import url('https://fonts.googleapis.com/css2?family=Playfair+Display&display=swap');
 
-@layer components {
   html {
     font-family: Georgia, 'Times New Roman', Times, serif;
     scroll-behavior: smooth;
@@ -17,23 +16,24 @@
     box-sizing: border-box;
   }
 
+ @layer base { 
   h1,h2,h3,h4, h5 {
-    letter-spacing: 5px;
-    @apply font-playFair
+    @apply font-playFair tracking-[5px]
   }
+ }
 
+ @layer base {
   a, li {
-    letter-spacing: 4px;
-    font-weight: 100;
-    cursor: pointer;
+    @apply tracking-[4px] cursor-pointer font-thin
   }
+ }
 
+ @layer components {
   .centerSection { 
-    max-width: 1100px;
-    margin: 0 auto 0 auto
+    @apply max-w-[1100] mx-auto
   }
+ }
 
   .img {
     @apply object-fill opacity-75 rounded
   }
-}
