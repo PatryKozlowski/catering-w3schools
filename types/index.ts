@@ -14,8 +14,19 @@ interface SanityImage {
     _type: 'reference'
   }
 }
-
 export interface navElementProps {
   navElementName: string
   sectionName: RefObject<HTMLDivElement | HTMLFormElement>
+}
+
+export interface Banner extends SanityBody {
+  _type: 'banner'
+  title: string
+  image: SanityImage
+}
+
+export interface StaticProps {
+  bannerTemplate: {
+    banner: Banner[]
+  }
 }
